@@ -1,0 +1,166 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Découvrez des films, recherchez vos favoris et explorez le cinéma avec CinéBox.">
+    <title>CinéBox — Explorez le cinéma</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <!-- En-tête et navigation -->
+    <header class="site-header">
+        <a href="#accueil" class="logo" aria-label="CinéBox, accueil">
+            <span class="logo-icon">C</span>
+            Ciné<span>Box</span>
+        </a>
+
+        <nav class="main-nav" aria-label="Navigation principale">
+            <a href="#accueil" class="nav-link active">Accueil</a>
+            <a href="#catalogue" class="nav-link">Films</a>
+            <a href="#apropos" class="nav-link">À propos</a>
+        </nav>
+
+        <a href="#catalogue" class="header-button">Explorer les films</a>
+    </header>
+
+    <main>
+        <!-- Section d'accueil -->
+        <section class="hero" id="accueil">
+            <div class="hero-content">
+                <span class="eyebrow">
+                    <span class="eyebrow-dot"></span>
+                    VOTRE UNIVERS CINÉMATOGRAPHIQUE
+                </span>
+
+                <h1>Un film.<br>Une <span>émotion.</span></h1>
+
+                <p>
+                    Explorez des histoires inoubliables, découvrez
+                    de nouveaux univers et trouvez votre prochain film préféré.
+                </p>
+
+                <a href="#catalogue" class="primary-button">
+                    Découvrir les films <span aria-hidden="true">↘</span>
+                </a>
+            </div>
+
+            <div class="hero-decoration" aria-hidden="true">
+                <div class="hero-circle"></div>
+                <div class="hero-symbol">C.</div>
+                <span class="hero-caption">YOUR NEXT MOVIE STARTS HERE</span>
+            </div>
+        </section>
+
+        <!-- Catalogue -->
+        <section class="catalogue section-container" id="catalogue">
+            <div class="section-heading">
+                <div>
+                    <span class="section-label">LE CATALOGUE</span>
+                    <h2>Explorez les films</h2>
+                    <p class="section-description">
+                        Des classiques aux nouvelles aventures, trouvez votre prochaine histoire.
+                    </p>
+                </div>
+
+                <span class="movie-counter" id="movie-counter">0 films</span>
+            </div>
+
+            <!-- Recherche -->
+            <div class="search-wrapper">
+                <span class="search-icon" aria-hidden="true">⌕</span>
+                <input
+                    type="search"
+                    id="search-input"
+                    placeholder="Rechercher un film..."
+                    aria-label="Rechercher un film par son titre"
+                    autocomplete="off"
+                >
+                <span class="search-hint">Titre</span>
+            </div>
+
+            <!-- Filtres générés par JavaScript -->
+            <div class="filter-area">
+                <span class="filter-label">GENRES</span>
+                <div class="genre-filters" id="genre-filters"
+                     aria-label="Filtrer les films par genre">
+                </div>
+            </div>
+
+            <!-- Les cartes de films seront insérées ici -->
+            <div class="movie-grid" id="movie-grid"></div>
+
+            <!-- Message si aucun film ne correspond -->
+            <div class="empty-state" id="empty-state" hidden>
+                <div class="empty-icon" aria-hidden="true">⌕</div>
+                <h3>Aucun film trouvé</h3>
+                <p>Essaie un autre titre ou sélectionne un autre genre.</p>
+                <button type="button" class="reset-button" id="reset-button">
+                    Réinitialiser les filtres
+                </button>
+            </div>
+        </section>
+
+        <!-- À propos -->
+        <section class="about-section" id="apropos">
+            <div class="about-inner">
+                <span class="section-label">À PROPOS DE CINÉBOX</span>
+                <h2>Le cinéma, <span>à portée de clic.</span></h2>
+                <p>
+                    CinéBox est un catalogue de démonstration conçu pour
+                    explorer des films, consulter leurs informations et
+                    découvrir des histoires venues de tous les horizons.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Pied de page -->
+    <footer class="site-footer">
+        <a href="#accueil" class="logo footer-logo">
+            <span class="logo-icon">C</span>
+            Ciné<span>Box</span>
+        </a>
+
+        <p>Fait avec passion pour les amoureux du cinéma.</p>
+        <span class="copyright">© <span id="current-year"></span> CinéBox</span>
+    </footer>
+
+    <!-- Fenêtre modale des détails -->
+    <div class="modal-overlay" id="movie-modal" hidden>
+        <section
+            class="movie-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modal-title"
+        >
+            <button
+                type="button"
+                class="modal-close"
+                id="modal-close"
+                aria-label="Fermer les détails"
+            >×</button>
+
+            <div class="modal-poster-wrapper">
+                <img id="modal-poster" src="" alt="">
+            </div>
+
+            <div class="modal-content">
+                <span class="section-label">FICHE DU FILM</span>
+                <h2 id="modal-title"></h2>
+                <div class="modal-meta" id="modal-meta"></div>
+                <p class="modal-synopsis" id="modal-synopsis"></p>
+                <button type="button" class="primary-button" id="modal-done">
+                    Retour au catalogue
+                </button>
+            </div>
+        </section>
+    </div>
+
+</body>
+</html>
